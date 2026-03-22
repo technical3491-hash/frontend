@@ -21,7 +21,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ message: 'City parameter is required' });
   }
 
-  const MONGODB_URL = process.env.MONGODB_URL || "mongodb://localhost:27017/weather_db";
+  const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://sanjay45:Sanjay45s@cluster0.smjq8zg.mongodb.net/weather_db?appName=Cluster0";
 
   try {
     // Connect to MongoDB if not connected
