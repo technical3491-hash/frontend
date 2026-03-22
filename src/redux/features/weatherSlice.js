@@ -6,10 +6,11 @@ export const fetchWeather = createAsyncThunk(
   'weather/fetchWeather',
   async (city, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`/api/weather/${city}`);
+      const baseUrl = process.env.REACT_APP_BACKEND_URL || 'https://backend-qfypqr2qj-sans-projects-3934c21d.vercel.app';
+      const response = await axios.get(`${baseUrl}/weather/${encodeURIComponent(city)}`);
       return response.data;
     } catch (error) {
-      return rejectWithValue(error.response.data);
+      return rejectWithValue(error.response ? error.response.data : { message: error.message });
     }
   }
 );
